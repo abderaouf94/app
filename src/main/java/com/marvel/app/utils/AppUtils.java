@@ -16,8 +16,4 @@ public class AppUtils {
 		}
 		return dest;
 	}
-
-	public static <T, U> U map(final Mapper mapper, final T source, final Class<U> destType) {
-		return mapper.map(source, destType);
-	}
 }

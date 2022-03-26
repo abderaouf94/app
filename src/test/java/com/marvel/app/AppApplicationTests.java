@@ -54,7 +54,7 @@ class AppApplicationTests {
 
 	@Test
 	void getSuperHeroeByGennericSearchTest() {
-		List<SuperHeroDto> result = superHeroService.getSuperHeroeByGennericSearch(null);
+		List<SuperHeroDto> result = superHeroService.getSuperHeroeByGennericSearch("man");
 		
 		assertFalse(result.isEmpty());
 		assertEquals(2, result.size());

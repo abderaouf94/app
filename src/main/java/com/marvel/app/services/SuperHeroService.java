@@ -22,7 +22,6 @@ public class SuperHeroService {
 
 	public List<SuperHeroDto> getAllSuperHeroes() {
 		List<SuperHero> entities = superHeroRepository.findAll();
-		AppUtils.map(mapper, entities, SuperHeroDto.class);
 		return AppUtils.map(mapper, entities, SuperHeroDto.class);
 	}
 
@@ -32,7 +31,8 @@ public class SuperHeroService {
 	}
 
 	public List<SuperHeroDto> getSuperHeroeByGennericSearch(String name) {
-		return null;
+		List<SuperHero> entities = superHeroRepository.findByNameContaining(name);
+		return AppUtils.map(mapper, entities, SuperHeroDto.class);
 	}
 
 	public SuperHeroDto modifySuperHeroTest(Long id, SuperHeroDto modificationDto) {
