@@ -36,7 +36,11 @@ public class SuperHeroService {
 	}
 
 	public SuperHeroDto modifySuperHeroTest(Long id, SuperHeroDto modificationDto) {
-		return null;
+		SuperHero entity = new SuperHero();
+		entity.setId(id);
+		entity.setName(modificationDto.getName());
+		SuperHero result = superHeroRepository.save(entity);
+		return mapper.map(result, SuperHeroDto.class);
 	}
 
 	public void deleteSuperHeroTest(Long id) {
