@@ -27,7 +27,8 @@ public class SuperHeroService {
 	}
 
 	public SuperHeroDto getSuperHeroeById(Long id) {
-		return null;
+		SuperHero entity = superHeroRepository.findById(id).orElse(null);
+		return mapper.map(entity, SuperHeroDto.class);
 	}
 
 	public List<SuperHeroDto> getSuperHeroeByGennericSearch(String name) {
