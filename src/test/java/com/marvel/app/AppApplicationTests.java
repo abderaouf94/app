@@ -7,7 +7,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AppApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void getAllSuperHeroesTest() {
+	}
+	
+	@Test
+	void getSuperHeroeByIdTest() {
+	}
+	
+	@Test
+	void getSuperHeroeByGennericSearchTest() {
+	}
+	
+	@Test
+	void modifySuperSeroTest() {
+	}
+	
+	@Test
+	void deleteSuperSeroTest() {
 	}
 
 }
