@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marvel.app.dto.SuperHeroDto;
-import com.marvel.app.dto.SuperHeroModificationDto;
 import com.marvel.app.services.SuperHeroService;
 
 @RestController
@@ -39,13 +38,13 @@ public class SuperHeroResource {
 	}
 
 	@PutMapping("/{id}")
-	public SuperHeroDto modifySuperHeroTest(@PathVariable String id,
-			@RequestBody SuperHeroModificationDto modificationDto) {
+	public SuperHeroDto modifySuperHeroTest(@PathVariable Long id,
+			@RequestBody SuperHeroDto modificationDto) {
 		return superHeroService.modifySuperHeroTest(id, modificationDto);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteSuperSeroTest(@PathVariable String id) {
-		superHeroService.deleteSuperSeroTest();
+	public void deleteSuperSeroTest(@PathVariable Long id) {
+		superHeroService.deleteSuperHeroTest(id);
 	}
 }
