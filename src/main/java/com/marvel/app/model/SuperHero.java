@@ -12,6 +12,8 @@ public class SuperHero {
 	@GeneratedValue
 	private Long id;
 	private String name;
+	
+	public SuperHero() {}
 
 	public SuperHero(String name) {
 		this.name = name;
