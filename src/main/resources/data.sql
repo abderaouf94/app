@@ -1,0 +1,1 @@
+INSERT INTO SUPER_HEROE (name) VALUES ('Superman'),('Spiderman'),('Capitan América');
