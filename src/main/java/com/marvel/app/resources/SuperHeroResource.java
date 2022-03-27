@@ -38,7 +38,7 @@ public class SuperHeroResource {
 	}
 
 	@PutMapping("/new")
-	public SuperHeroDto modifySuperHeroTest(@RequestBody SuperHeroDto dto) {
+	public SuperHeroDto createSuperHeroTest(@RequestBody SuperHeroDto dto) {
 		return superHeroService.createSuperHero(dto);
 	}
 

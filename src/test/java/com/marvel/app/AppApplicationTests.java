@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.marvel.app.daos.SuperHeroRepository;
 import com.marvel.app.dto.SuperHeroDto;
 import com.marvel.app.model.SuperHero;
+import com.marvel.app.repositories.SuperHeroRepository;
 import com.marvel.app.services.SuperHeroService;
 
 @SpringBootTest
@@ -54,7 +54,7 @@ class AppApplicationTests {
 		SuperHeroDto result = superHeroService.getSuperHeroeById(1L);
 
 		assertNotNull(result);
-		assertEquals("Superheroe1 Marvel", result.getName());
+		assertEquals("Superheroe1 Marvel", result.getSuperHeroName());
 	}
 
 	@Test
@@ -68,12 +68,12 @@ class AppApplicationTests {
 	@Test
 	public void createSuperHeroTest() {
 		SuperHeroDto modificationDto = new SuperHeroDto();
-		modificationDto.setName("New super hero");
+		modificationDto.setSuperHeroName("New super hero");
 
 		SuperHeroDto result = superHeroService.createSuperHero(modificationDto);
 
 		assertNotNull(result);
-		assertEquals("New super hero", result.getName());
+		assertEquals("New super hero", result.getSuperHeroName());
 	}
 
 	@Test
@@ -82,12 +82,12 @@ class AppApplicationTests {
 		superHeroRepository.save(superHero);
 
 		SuperHeroDto modificationDto = new SuperHeroDto();
-		modificationDto.setName("He is no longer superman");
+		modificationDto.setSuperHeroName("He is no longer superman");
 
 		SuperHeroDto result = superHeroService.modifySuperHero(1L, modificationDto);
 
 		assertNotNull(result);
-		assertEquals("He is no longer superman", result.getName());
+		assertEquals("He is no longer superman", result.getSuperHeroName());
 	}
 
 	@Test

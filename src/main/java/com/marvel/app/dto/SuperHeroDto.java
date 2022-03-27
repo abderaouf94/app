@@ -1,37 +1,23 @@
 package com.marvel.app.dto;
 
-import java.util.Objects;
-
 public class SuperHeroDto {
-	private String name;
+	private Long id;
+	private String superHeroName;
 
-	public String getName() {
-		return name;
+	public Long getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
+	public String getSuperHeroName() {
+		return superHeroName;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SuperHeroDto other = (SuperHeroDto) obj;
-		return Objects.equals(name, other.name);
+	public void setSuperHeroName(String superHeroName) {
+		this.superHeroName = superHeroName;
 	}
 
-	@Override
-	public String toString() {
-		return "SuperHeroDto [name=" + name + "]";
-	}
 }

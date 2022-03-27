@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.dozermapper.core.Mapper;
-import com.marvel.app.daos.SuperHeroRepository;
 import com.marvel.app.dto.SuperHeroDto;
 import com.marvel.app.model.SuperHero;
+import com.marvel.app.repositories.SuperHeroRepository;
 import com.marvel.app.utils.AppUtils;
 
 @Service
@@ -31,21 +31,21 @@ public class SuperHeroService {
 	}
 
 	public List<SuperHeroDto> getSuperHeroeByGennericSearch(String name) {
-		List<SuperHero> entities = superHeroRepository.findByNameContaining(name);
+		List<SuperHero> entities = superHeroRepository.findBySuperHeroNameIgnoreCaseContaining(name);
 		return AppUtils.map(mapper, entities, SuperHeroDto.class);
 	}
 
 	public SuperHeroDto createSuperHero(SuperHeroDto modificationDto) {
 		SuperHero entity = new SuperHero();
-		entity.setName(modificationDto.getName());
+		entity.setSuperHeroName(modificationDto.getSuperHeroName());
 		SuperHero result = superHeroRepository.save(entity);
 		return mapper.map(result, SuperHeroDto.class);
 	}
-	
+
 	public SuperHeroDto modifySuperHero(Long id, SuperHeroDto modificationDto) {
 		SuperHero entity = superHeroRepository.findById(id).orElse(null);
 		if (entity != null) {
-			entity.setName(modificationDto.getName());
+			entity.setSuperHeroName(modificationDto.getSuperHeroName());
 			SuperHero result = superHeroRepository.save(entity);
 			return mapper.map(result, SuperHeroDto.class);
 		}
