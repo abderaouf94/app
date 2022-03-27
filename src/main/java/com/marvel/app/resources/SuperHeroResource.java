@@ -16,7 +16,7 @@ import com.marvel.app.dto.SuperHeroDto;
 import com.marvel.app.services.SuperHeroService;
 
 @RestController
-@RequestMapping("superHeros")
+@RequestMapping("superHeroes")
 public class SuperHeroResource {
 
 	@Autowired
@@ -37,14 +37,18 @@ public class SuperHeroResource {
 		return superHeroService.getSuperHeroeByGennericSearch(name);
 	}
 
+	@PutMapping("/new")
+	public SuperHeroDto modifySuperHeroTest(@RequestBody SuperHeroDto dto) {
+		return superHeroService.createSuperHero(dto);
+	}
+
 	@PutMapping("/{id}")
-	public SuperHeroDto modifySuperHeroTest(@PathVariable Long id,
-			@RequestBody SuperHeroDto modificationDto) {
-		return superHeroService.modifySuperHeroTest(id, modificationDto);
+	public SuperHeroDto modifySuperHeroTest(@PathVariable Long id, @RequestBody SuperHeroDto dto) {
+		return superHeroService.modifySuperHero(id, dto);
 	}
 
 	@DeleteMapping("/{id}")
 	public void deleteSuperSeroTest(@PathVariable Long id) {
-		superHeroService.deleteSuperHeroTest(id);
+		superHeroService.deleteSuperHero(id);
 	}
 }

@@ -35,15 +35,25 @@ public class SuperHeroService {
 		return AppUtils.map(mapper, entities, SuperHeroDto.class);
 	}
 
-	public SuperHeroDto modifySuperHeroTest(Long id, SuperHeroDto modificationDto) {
+	public SuperHeroDto createSuperHero(SuperHeroDto modificationDto) {
 		SuperHero entity = new SuperHero();
-		entity.setId(id);
 		entity.setName(modificationDto.getName());
 		SuperHero result = superHeroRepository.save(entity);
 		return mapper.map(result, SuperHeroDto.class);
 	}
+	
+	public SuperHeroDto modifySuperHero(Long id, SuperHeroDto modificationDto) {
+		SuperHero entity = superHeroRepository.findById(id).orElse(null);
+		if (entity != null) {
+			entity.setName(modificationDto.getName());
+			SuperHero result = superHeroRepository.save(entity);
+			return mapper.map(result, SuperHeroDto.class);
+		}
+		return null;
+	}
 
-	public void deleteSuperHeroTest(Long id) {
+	public void deleteSuperHero(Long id) {
+		superHeroRepository.deleteById(id);
 	}
 
 }
